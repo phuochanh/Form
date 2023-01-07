@@ -1,12 +1,9 @@
 import { combineReducers, createStore } from "redux";
 
-import { chairReducer } from "./reducers/chairReducer";
-
 import { userReducer } from "./reducers/userReducer";
 
 //rootReducer: reducer tổng
 const rootReducer = combineReducers({
-  chairReducer,
   userReducer,
 });
 

@@ -141,12 +141,12 @@ class FormSinhVien extends Component {
                 <div className="form-group">
                   <label>Họ tên</label>
                   <input
-                  pattern="[A-z]{5,10}$"
+                  pattern="[A-z ]{3,15}$"
                     value={hoTen}
                     title="Ho Ten"
                     required
-                    minLength={5}
-                    maxLength={10}
+                    minLength={3}
+                    maxLength={15}
                     name="hoTen"
                     type="text"
                     className="form-control"
