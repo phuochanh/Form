@@ -3,15 +3,15 @@ const DEFAULT_STATE = {
         {
             id: 1,
             maSV: 1,
-            hoTen: "man.nguyen",
-            soDienThoai: "1234567",
+            hoTen: "man nguyen",
+            soDienThoai: "0123456789",
             email: "man@gmail.com",
         },
         {
             id: 2,
             maSV: 2,
-            hoTen: "khai.nguyen",
-            soDienThoai: "123456",
+            hoTen: "khai nguyen",
+            soDienThoai: "0123456789",
             email: "khai@gmail.com",
         }
     ],
@@ -41,7 +41,11 @@ export const userReducer = (state = DEFAULT_STATE, action) => {
         }
 
         case "DELETE_USER": {
-            state.userList = state.userList.filter(ele => ele.id = payload.id ? false : true);
+            const data = [...state.userList];
+            const idx = data.findIndex((element) => element.id === payload.id);
+            data.splice(idx, 1);
+            state.userList = data;
+            // state.userList = state.userList.filter(ele => ele.id = payload.id ? false : true);
             break;
         }
         default:

@@ -31,11 +31,6 @@ class FormSinhVien extends Component {
         ...this.state.values, //Lấy lại giá trị cũ
         [name]: value, //Gán lại giá trị moiws
       },
-
-      // values: {
-      //   ...this.state.values,
-      //   [name]: value,
-      // },
     });
   };
 
@@ -76,7 +71,7 @@ class FormSinhVien extends Component {
     // console.log(patternMismatch);
 
     if (valueMissing) {
-      message = `${title} is required`;
+      message = `${title} bắt buộc`;
     }
 
     if (tooShort || tooLong) {
@@ -84,7 +79,14 @@ class FormSinhVien extends Component {
     }
 
     if (patternMismatch) {
-      message = `${title} is invalid pattern`;
+      message = `${title} không hợp lệ`;
+    }
+
+    if(patternMismatch && name === "hoTen"){
+      message = `${title} phải là chữ cái từ A-z và có chiều dài từ 3-15 ký tự`
+    }
+    if(patternMismatch && name === "maSV"){
+      message = `${title} phải là số`
     }
 
     this.setState({
@@ -123,10 +125,10 @@ class FormSinhVien extends Component {
                 <div className="form-group">
                   <label>Mã SV</label>
                   <input
-                  pattern="[0-9]$"
+                  pattern="[0-9]{0, }$"
                     // value={this.props.selectedUser?.maSV}
                     value={maSV}
-                    title="Ma SV"
+                    title="Mã SV"
                     required // Để trống sẽ cảnh báo
                     name="maSV"
                     type="text"
@@ -143,7 +145,7 @@ class FormSinhVien extends Component {
                   <input
                   pattern="[A-z ]{3,15}$"
                     value={hoTen}
-                    title="Ho Ten"
+                    title="Họ Tên"
                     required
                     minLength={3}
                     maxLength={15}
@@ -163,7 +165,7 @@ class FormSinhVien extends Component {
                   <input
                   pattern="0[0-9]{9}$"
                     value={soDienThoai}
-                    title="Phone number"
+                    title="Số điện thoại"
                     required
                     name="soDienThoai"
                     type="text"
